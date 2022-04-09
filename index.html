@@ -7,17 +7,127 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-
+    <!-- jQuery -->
     <script
       src="https://code.jquery.com/jquery-3.3.1.min.js"
       integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
       crossorigin="anonymous"></script>
+    <!-- Underscore-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.13.2/underscore-min.js"></script>
     <script src="js/application.js"></script>
 
+    <!-- Bootstrap v3.3.1-->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/custom.css" rel="stylesheet">
   </head>
   <body>
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="row headline">
+            <div class="col-xs-12">
+              <h3>Shopping cart</h3>
+            </div>
+          </div>
+
+          <div class="row column-titles">
+            <div class="col-xs-3 item-name">Item</div>
+            <div class="col-xs-3 item-price">Price in US$</div>
+            <div class="col-xs-3 item-quantity">Quantity</div>
+            <div class="col-xs-2 col-xs-offset-1 item-subtotal">Subtotal price in US$</div>
+          </div>
+
+          <div class="row item">
+            <div class="col-xs-3 item-name">Bread, 1kg</div>
+            <div class="col-xs-3 item-price">2.00</div>
+            <div class="col-xs-3 item-quantity">
+              <label for="quantity">QTY</label>
+              <input type="number" class="quantity" value="0" min="0">
+              <small class="help-block">Only numbers >= 0 allowed.</small>
+            </div>
+            <div class="col-xs-1">
+              <button class="remove-button">Remove</button>
+            </div>
+            <div class="class-xs-2 item-subtotal">$--.--</div>
+          </div>
+
+          <div class="row item">
+            <div class="col-xs-3 item-name">Milk, 1 litre</div>
+            <div class="col-xs-3 item-price">1.50</div>
+            <div class="col-xs-3 item-quantity">
+              <label for="quantity">QTY</label>
+              <input type="number" class="quantity" value="0" min="0">
+              <small class="help-block">Only numbers >= 0 allowed.</small>
+            </div>
+            <div class="col-xs-1">
+              <button class="remove-button">Remove</button>
+            </div>
+            <div class="class-xs-2 item-subtotal">$--.--</div>
+          </div>
+
+          <div class="row item">
+            <div class="col-xs-3 item-name">Salad, 500g</div>
+            <div class="col-xs-3 item-price">1.50</div>
+            <div class="col-xs-3 item-quantity">
+              <label for="quantity">QTY</label>
+              <input type="number" class="quantity" value="0" min="0">
+              <small class="help-block">Only numbers >= 0 allowed.</small>
+            </div>
+            <div class="col-xs-1">
+              <button class="remove-button">Remove</button>
+            </div>
+            <div class="class-xs-2 item-subtotal">$--.--</div>
+          </div>
+
+          <div class="row item">
+            <div class="col-xs-3 item-name">Cheese, 500g</div>
+            <div class="col-xs-3 item-price">3.50</div>
+            <div class="col-xs-3 item-quantity">
+              <label for="quantity">QTY</label>
+              <input type="number" class="quantity" value="0" min="0">
+              <small class="help-block">Only numbers >= 0 allowed.</small>
+            </div>
+            <div class="col-xs-1">
+              <button class="remove-button">Remove</button>
+            </div>
+            <div class="class-xs-2 item-subtotal">$--.--</div>
+          </div>
+
+          <div class="row item">
+            <div class="col-xs-3 item-name">Mineral water, 1.5 litre</div>
+            <div class="col-xs-3 item-price">1.50</div>
+            <div class="col-xs-3 item-quantity">
+              <label for="quantity">QTY</label>
+              <input type="number" class="quantity" value="0" min="0">
+              <small class="help-block">Only numbers >= 0 allowed.</small>
+            </div>
+            <div class="col-xs-1">
+              <button class="remove-button">Remove</button>
+            </div>
+            <div class="class-xs-2 item-subtotal">$--.--</div>
+          </div>
+
+          <div class="row add-item">
+            <div class="col-xs-3">
+              <input type="text" placeholder="New item">
+            </div>
+            <div class="col-xs-3">
+              <input type="text" placeholder="Amount">
+            </div>
+            <div class="col-xs-1">
+              <button class="add-item-button">Add</button>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-xs-12">
+              <h1 class="total-price-label">Total price: </h1>
+              <div id="total-price">$--.--</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
   </body>
 </html>

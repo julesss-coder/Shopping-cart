@@ -1,0 +1,8 @@
+.help-block {
+  display: none;
+}
+
+.help-block.active {
+  display: block;
+}
+
