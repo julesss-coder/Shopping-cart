@@ -4,11 +4,18 @@ Goal: https://altcademy-shopping-cart.netlify.app/
 Steps:
 - [x] Set up HTML structure in Bootstrap 3.
 
-- [ ] Calculate and display the total price.
+- [x] Calculate and display the total price.
 - [x] Calculate and display the sub total price of each item.
-- [ ] Allow user to add a new item.
-- [ ] Allow user to delete an item.
+- [x] Allow user to add a new item.
+- [x] Allow user to delete an item.
 - [ ] Use Git to manage version control and push your work to a GitHub repository.
+- [x] Clean up looks.
+- [ ] Add background image and/or other design.
+- [ ] Set up Git Page for this project, for its final version.
+- [ ] When list is empty, column titles should disappear.
+- [ ] There should be helper text under add item input fields, reminding the user to enter an item text and a number (if the user enters something else.)
+- [ ] Fix borders (column titles should not be outside borders).
+- [ ] Fix offset before 'subtotal' title on all breakpoints
 
 Feel free to add CSS personalizations to this assignment to make it your own.
 
@@ -20,8 +27,6 @@ Code Review:
 - Where could I use Bootstrap where I have used CSS?
 
 Questions:
-Can I change the quantity input field so that the input cannot be below 0? --> Alternative to event handler that only updates subtotal if qty >= 0.
-
 Can I / How can I combine jQuery and vanilla JS methods?
 
 

@@ -1,24 +1,70 @@
-// - [ ] Calculate and display the sub total price of each item.
+// ============= Get subtotal price of each item ========
 
-var updateSubtotal = function(event) {
-  var itemPrice = Number($(event.target).parent().siblings('.item-price').text());
-
-  var itemQty = Number($(event.target).val());
+var updateSubtotal = function(element) {
+  var itemPrice = Number($(element).find('.item-price').text());
+  var itemQty = Number($(element).find('.quantity').val());
   var subTotal = itemPrice * itemQty;
-  $(event.target).parent().siblings('.item-subtotal').text(`$${subTotal}`);
+  $(element).find('.item-subtotal').text(`$${subTotal}`);
+  return subTotal;
+}
+
+// ============= Get total price ===========
+
+var totalPrice = $('.item .item-subtotal').each(function(index, element) {
+  var total = updateSubtotal(element);
+  return total;
+});
+
+var updateTotalPrice = function() {
+  var subtotalPricesArray = [];
+
+  $('.item').each(function(index, element) {
+    var subtotal = updateSubtotal(element);
+    subtotalPricesArray.push(subtotal);
+  });
+
+  var subtotal = subtotalPricesArray.reduce(function(acc, cur) {
+    return acc + cur;
+  }, 0);
+
+  $('#total-price').text(`$${subtotal}`);
+};
+
+// ========== Add item =====================
+
+var addItem = function() {
+  var itemName = $('.add-item-name').val();
+  var itemPrice = Number($('.add-item-price').val());
+
+  // add the new item to shopping list
+  $('.add-item').before(`<div class="row item">
+  <div class="col-xs-3 item-name">${itemName}</div>
+  <div class="col-xs-2 col-sm-3 item-price">${itemPrice}</div>
+  <div class="col-xs-2 col-sm-3 item-quantity">
+    <input type="number" class="quantity" value="0" min="0">
+    <small class="help-block">Only numbers >= 0 allowed.</small>
+  </div>
+  <div class="col-xs-3 col-sm-2">
+    <button class="remove-button">Remove</button>
+  </div>
+  <div class="col-xs-1 item-subtotal">$--.--</div>
+</div>`);
 };
 
 
-// - [ ] Calculate and display the total price.
+// ========== Remove item ===================
+
+var removeItem = function(event) {
+  $(event.target).parent().parent().remove();
+};
 
 
 // ========== UPON DOMCONTENTLOAD: ===============
 
 $(document).ready(function() {
-  // -------- Update total price -------------------------------
-    // Call function to update total price
-  
-  // --------Event listener for quantity input field------------
+  updateTotalPrice();
+
+  // =========== Event listener for quantity input field =============
   var timeout;
   // When quantity is changed: update subtotal/show help text after 500ms
   $(document).on('input', 'input.quantity', function(event) {
@@ -28,16 +74,46 @@ $(document).ready(function() {
         $(event.target).next().addClass('active');
       } else {
       // clearTimeout(timeout);
-      updateSubtotal(event);
+      updateSubtotal($(event.target).parent().parent());
+      updateTotalPrice();
       $(event.target).next().removeClass('active');
       }
     }, 500);
   });
 
-  // ------------Event listener for remove buttons ---------------
 
-  // ------------Event listener for add item button --------------
+  // ============== Event listener for remove buttons ===============
 
+  $('.remove-button').on('click', function(event) {
+    removeItem(event);
+    updateTotalPrice();
+  });
+
+  // ============== Event listener for add item button ================
+
+  $('.add-item-button').on('click', function() {
+    addItem();
+    updateSubtotal();
+    updateTotalPrice();
+    $('.add-item-name').val('');
+    $('.add-item-price').val('');
+  });
+
+  // Also add item by hitting Enter
+  $('.add-item').on('keyup', function(event) {
+    console.log(event);
+    if (event.key === 'Enter') {
+      // If there is an entry for 'item name' and if 'item number' is > 0
+      if ($('.add-item-name').val() !== '' && Number($('.add-item-price').val()) > 0) {
+        addItem();
+        updateSubtotal();
+        updateTotalPrice();
+      } 
+      $('.add-item-name').val('');
+      $('.add-item-price').val('');
+    }
+
+  });
 });
 
 

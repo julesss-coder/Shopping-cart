@@ -1,3 +1,46 @@
+/* --- Page headline --- */
+.shopping-cart {
+  padding-bottom: 10px;
+  margin: 10px 0 10px 0;
+  border-bottom: 1px solid lightgrey;
+}
+
+/* --- Column titles --- */
+.column-titles {
+  font-weight: bold;
+  font-size: 16px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid lightgrey;
+  margin-bottom: 15px;
+}
+
+.item-subtotal {
+  text-align: left;
+}
+
+/* --- row items --- */
+.row.item {
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+/* --- input elements --- */
+input.quantity {
+  width: 50px;
+}
+
+.add-item {
+  padding-top: 15px;
+  border-top: 1px solid lightgrey;
+}
+
+.add-item-name, 
+.add-item-price {
+  width: 150px;
+}
+
+/* --- Help text, if user enters negative number in quantity input field --- */
 .help-block {
   display: none;
 }
@@ -6,3 +49,44 @@
   display: block;
 }
 
+/* --- Add item fields --- */
+.add-item {
+  margin-top: 15px;
+}
+
+/* --- Total price display --- */
+.total-price-label, #total-price {
+  display: inline-block;
+}
+
+#total-price {
+  font-size: 30px;
+  margin-left: 5px;
+}
+
+/* =========== Media queries ============= */
+
+@media (min-width: 768px) { 
+  .container {
+    max-width: 720px;
+  }
+  input.quantity {
+    width: 100px;
+  }
+ }
+
+ @media (min-width: 992px) {
+   .container {
+     max-width: 930px;
+   }
+   .add-item-name, 
+   .add-item-price {
+     width: 200px;
+   } 
+ }
+
+ @media (min-width: 1200px) {
+  .container {
+    max-width: 1120px;
+  }
+}
