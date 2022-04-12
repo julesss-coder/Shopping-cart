@@ -1,4 +1,4 @@
-// ============= Get subtotal price of each item ========
+// ============= Get subtotal price of single item ========
 
 var updateSubtotal = function(element) {
   var itemPrice = Number($(element).find('.item-price').text());
@@ -8,12 +8,9 @@ var updateSubtotal = function(element) {
   return subTotal;
 }
 
-// ============= Get total price ===========
 
-var totalPrice = $('.item .item-subtotal').each(function(index, element) {
-  var total = updateSubtotal(element);
-  return total;
-});
+
+// ============= Get total price ===========
 
 var updateTotalPrice = function() {
   var subtotalPricesArray = [];
