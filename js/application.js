@@ -41,10 +41,10 @@ var addItem = function() {
     <input type="number" class="quantity" value="0" min="0">
     <small class="help-block">Only numbers >= 0 allowed.</small>
   </div>
-  <div class="col-xs-3 col-sm-2">
+  <div class="col-xs-3 col-sm-1">
     <button class="remove-button">Remove</button>
   </div>
-  <div class="col-xs-1 item-subtotal">$--.--</div>
+  <div class="col-xs-2 item-subtotal">$--.--</div>
 </div>`);
 };
 
@@ -53,6 +53,13 @@ var addItem = function() {
 
 var removeItem = function(event) {
   $(event.target).parent().parent().remove();
+
+  // When no items are left, column titles disappear
+  if ($('.content-box').children().length === 2) {
+    $('.column-titles').addClass('hidden');
+  } else if ($('.content-box').children().length > 2) {
+    $('.column-titles').removeClass('hidden');
+  }
 };
 
 
@@ -81,9 +88,12 @@ $(document).ready(function() {
 
   // ============== Event listener for remove buttons ===============
 
-  $('.remove-button').on('click', function(event) {
-    removeItem(event);
-    updateTotalPrice();
+  $(document).on('click', function(event) {
+    var target = $(event.target);
+    if (target.is($('.remove-button'))) {
+      removeItem(event);
+      updateTotalPrice();
+    }
   });
 
   // ============== Event listener for add item button ================
