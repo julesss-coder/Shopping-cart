@@ -8,24 +8,18 @@ Steps:
 - [x] Calculate and display the sub total price of each item.
 - [x] Allow user to add a new item.
 - [x] Allow user to delete an item.
-- [ ] Use Git to manage version control and push your work to a GitHub repository.
+- [x] Use Git to manage version control and push your work to a GitHub repository.
 - [x] Clean up looks.
-- [ ] Add background image and/or other design.
+- [x] Add background image and/or other design.
 - [ ] Set up Git Page for this project, for its final version.
-- [ ] When list is empty, column titles should disappear.
-- [ ] There should be helper text under add item input fields, reminding the user to enter an item text and a number (if the user enters something else.)
-- [ ] Fix borders (column titles should not be outside borders).
-- [ ] Fix offset before 'subtotal' title on all breakpoints
-- [ ] Fix background image: should cover whole screen.
-  - [ ] Fix font so that it is legible on background.
-- [ ] Fix subtotal headline - the columns to the left should need less space. (remove col-sm-3). OR: give 2 columns to subtotal. We are currently only using 11 columns.
-
-Feel free to add CSS personalizations to this assignment to make it your own.
+- [x] When list is empty, column titles should disappear.
+- [x] There should be helper text under add item input fields, reminding the user to enter an item text and a number.
+  - [x] This helper text should only appear if the user enters something invalid, and disappear after submitting something valid.
+- [x] Fix offset before 'subtotal' title on all breakpoints
+- [x] Fix background image: should cover whole screen.
+- [x] Fix subtotal headline - the columns to the left should need less space. (remove col-sm-3). OR: give 2 columns to subtotal. We are currently only using 11 columns.
 
 //======
-
-// Background image:
-https://unsplash.com/photos/N-AC7tTcD-c by Graphic Node
 
 Code Review:
 - Where could I use jQuery where I have used vanilla JavaScript?
@@ -39,6 +33,7 @@ Can I / How can I combine jQuery and vanilla JS methods?
 
 // WHAT I LEARNED
 Write down exactly the logical steps that need to happen to get your result. Do so with pen and paper BEFORE you try to program it. If you get stuck, think through the steps again (with pen an paper). Never code without a plan.
+
 
 // DATAFLOW
 DomContent loads --> document.ready() called
@@ -64,11 +59,12 @@ DomContent loads --> document.ready() called
     updateSubtotal() called for added item
     updateTotalPrice();
 
-// Logging the order of code read:
-  application.js:58: function expressions before document.ready() parsed 1649759469156
 
-  index.html:20 DOMContentLoaded from HTML file:  1649759469188
+  *Logging the order of code parsed:*
+    application.js:58: function expressions before document.ready() parsed 1649759469156
 
-  index.html:23 load from HTML file:  1649759469189
-  
-  application.js:63 document.ready() fires 1649759469192
+    index.html:20 DOMContentLoaded from HTML file:  1649759469188
+
+    index.html:23 load from HTML file:  1649759469189
+    
+    application.js:63 document.ready() fires 1649759469192

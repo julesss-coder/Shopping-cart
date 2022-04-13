@@ -48,17 +48,39 @@ var addItem = function() {
 </div>`);
 };
 
+var checkItemValidity = function() {
+  // if item-name input field empty:
+  if ($('.add-item-name').val() === '') {
+    $('.add-item-help-block-1').addClass('active');
+    return false;
+  // if item amount === 0 OR if item amount is not a number OR if item-amount input field empty:
+  } else if ($('.add-item-price').val() === 0 || isNaN($('.add-item-price').val()) || $('.add-item-price').val() === '') {
+    $('.add-item-help-block-2').addClass('active');
+      return false;
+  // if item entry is valid:
+  } else if ($('.add-item-name').val() !== '' && Number($('.add-item-price').val()) > 0) {
+    // Hide helper texts under input fields again
+    $('.add-item').find('.active').each(function(index, element) {
+      $(element).removeClass('active');
+    });
+    return true;
+  }
+};
+
 
 // ========== Remove item ===================
 
 var removeItem = function(event) {
   $(event.target).parent().parent().remove();
+};
 
-  // When no items are left, column titles disappear
-  if ($('.content-box').children().length === 2) {
-    $('.column-titles').addClass('hidden');
-  } else if ($('.content-box').children().length > 2) {
-    $('.column-titles').removeClass('hidden');
+//============ Update column titles ===========
+
+var updateColumnTitles = function() {
+  if ($('.item').length === 0) {
+    $('.column-titles').addClass('hide-titles');
+  } else if ($('.item').length === 1) {
+    $('.column-titles').removeClass('hide-titles');
   }
 };
 
@@ -77,7 +99,6 @@ $(document).ready(function() {
       if ((parseFloat($(event.target).val()) < 0)) {
         $(event.target).next().addClass('active');
       } else {
-      // clearTimeout(timeout);
       updateSubtotal($(event.target).parent().parent());
       updateTotalPrice();
       $(event.target).next().removeClass('active');
@@ -92,34 +113,39 @@ $(document).ready(function() {
     var target = $(event.target);
     if (target.is($('.remove-button'))) {
       removeItem(event);
+      updateColumnTitles();
       updateTotalPrice();
     }
   });
 
   // ============== Event listener for add item button ================
 
-  $('.add-item-button').on('click', function() {
-    addItem();
-    updateSubtotal();
-    updateTotalPrice();
-    $('.add-item-name').val('');
-    $('.add-item-price').val('');
-  });
 
-  // Also add item by hitting Enter
-  $('.add-item').on('keyup', function(event) {
-    console.log(event);
-    if (event.key === 'Enter') {
-      // If there is an entry for 'item name' and if 'item number' is > 0
-      if ($('.add-item-name').val() !== '' && Number($('.add-item-price').val()) > 0) {
-        addItem();
-        updateSubtotal();
-        updateTotalPrice();
-      } 
+  // Add item by clicking "Add" button:
+  $('.add-item-button').on('click', function() {
+    // if user entry is valid:
+    if (checkItemValidity() === true) {
+      addItem();
+      updateColumnTitles();
+      updateSubtotal();
+      updateTotalPrice();
       $('.add-item-name').val('');
       $('.add-item-price').val('');
     }
+  });
 
+  // Also add item by hitting Enter:
+  $('.add-item').on('keyup', function(event) {
+    if (event.key === 'Enter') {
+      if (checkItemValidity() === true) {
+        addItem();
+        updateColumnTitles();
+        updateSubtotal();
+        updateTotalPrice();
+        $('.add-item-name').val('');
+        $('.add-item-price').val('');
+      }
+    }
   });
 });
 

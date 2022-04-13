@@ -31,9 +31,6 @@ body::before {
 /* --- Page headline --- */
 .shopping-cart {
   padding-bottom: 10px;
-  /* margin-bottom: 10px;
-  margin-top: 10px; */
-  border-bottom: 1px solid lightgrey;
 }
 
 /* --- Column titles --- */
@@ -46,7 +43,7 @@ body::before {
   margin-bottom: 15px;
 }
 
-.column-titles .hidden {
+.hide-titles {
   display: none;
 }
 
@@ -68,8 +65,8 @@ input.quantity {
 }
 
 .add-item {
-  padding-top: 15px;
-  border-top: 1px solid lightgrey;
+  padding-top: 20px;
+  /* border-top: 1px solid lightgrey; */
 }
 
 .add-item-name, 
@@ -89,6 +86,16 @@ input.quantity {
 /* --- Add item fields --- */
 .add-item {
   margin-top: 15px;
+}
+
+.add-item-help-block-1,
+.add-item-help-block-2 {
+  display: none;
+}
+
+.add-item-help-block-1.active,
+.add-item-help-block-2.active {
+  display: block;
 }
 
 /* --- Total price display --- */
