@@ -21,16 +21,6 @@ Steps:
 
 //======
 
-Code Review:
-- Where could I use jQuery where I have used vanilla JavaScript?
-- Where could I use Underscore?
-- Where could I use Bootstrap where I have used CSS?
-
-Questions:
-Can I / How can I combine jQuery and vanilla JS methods?
-
-
-
 // WHAT I LEARNED
 Write down exactly the logical steps that need to happen to get your result. Do so with pen and paper BEFORE you try to program it. If you get stuck, think through the steps again (with pen an paper). Never code without a plan.
 

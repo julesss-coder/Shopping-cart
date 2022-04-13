@@ -91,20 +91,35 @@ $(document).ready(function() {
   updateTotalPrice();
 
   // =========== Event listener for quantity input field =============
-  var timeout;
+
+  // V.1, using regular event handler (works)
+
+  // var timeout;
   // When quantity is changed: update subtotal/show help text after 500ms
-  $(document).on('input', 'input.quantity', function(event) {
-    clearTimeout(timeout);
-    timeout = setTimeout(function() {
-      if ((parseFloat($(event.target).val()) < 0)) {
+  // $(document).on('input', 'input.quantity', function(event) {
+  //   clearTimeout(timeout);
+  //   timeout = setTimeout(function() {
+  //     if ((parseFloat($(event.target).val()) < 0)) {
+  //       $(event.target).next().addClass('active');
+  //     } else {
+  //     updateSubtotal($(event.target).parent().parent());
+  //     updateTotalPrice();
+  //     $(event.target).next().removeClass('active');
+  //     }
+  //   }, 500);
+  // });
+
+  // V.2, using underscore's debounce function
+  $(document).on('input', 'input.quantity', _.debounce(function(event) {
+    if ((parseFloat($(event.target).val()) < 0)) {
         $(event.target).next().addClass('active');
       } else {
-      updateSubtotal($(event.target).parent().parent());
-      updateTotalPrice();
-      $(event.target).next().removeClass('active');
-      }
-    }, 500);
-  });
+    updateSubtotal($(event.target).parent().parent());
+    updateTotalPrice();
+    $(event.target).next().removeClass('active');
+    }
+  }, 500));
+
 
 
   // ============== Event listener for remove buttons ===============
