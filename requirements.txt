@@ -11,7 +11,7 @@ Steps:
 - [x] Use Git to manage version control and push your work to a GitHub repository.
 - [x] Clean up looks.
 - [x] Add background image and/or other design.
-- [ ] Set up Git Page for this project, for its final version.
+- [x] Set up Git Page for this project, for its final version.
 - [x] When list is empty, column titles should disappear.
 - [x] There should be helper text under add item input fields, reminding the user to enter an item text and a number.
   - [x] This helper text should only appear if the user enters something invalid, and disappear after submitting something valid.

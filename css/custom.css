@@ -8,10 +8,15 @@ body {
 /* Put background image in pseudo element of body so that opacity of image does not affect text in body element. */
 body::before {
   content: "";
-  background: url("./images/graphic-node-N-AC7tTcD-c-unsplash.jpg");
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
+   /* Problem: Background image takes too long to load.
+   Solution: Set two background images: FIRST the high-res image, then the low-res image. The browser will display the second image first, and when the high-res image has loaded, display it on top of low-res image. You need to set the background properties for BOTH images! */
+  background: url('./images/high-res-shopping-cart.jpg'), url('./images/shopping-cart-small.jpg');
+  background-position: center,
+  center;
+  background-size: cover,
+  cover;
+  background-repeat: no-repeat,
+  no-repeat;
   top: 0px;
   right: 0px;
   bottom: 0px;
